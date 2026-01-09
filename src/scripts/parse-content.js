@@ -70,15 +70,23 @@ function parseNodes($, container) {
 
         // 4. LISTS
         else if (tag === 'ul' || tag === 'ol') {
-            const items = [];
-            $el.find('li').each((j, li) => {
-                items.push(cleanText($(li).text()));
-            });
-            blocks.push({
-                type: 'list',
-                listType: tag === 'ol' ? 'ordered' : 'unordered',
-                items
-            });
+            // Special handling for buildify_list which is used for layout
+            if ($el.hasClass('buildify_list')) {
+                $el.children('li').each((j, li) => {
+                    const liBlocks = parseNodes($, $(li));
+                    blocks.push(...liBlocks);
+                });
+            } else {
+                const items = [];
+                $el.find('li').each((j, li) => {
+                    items.push(cleanText($(li).text()));
+                });
+                blocks.push({
+                    type: 'list',
+                    listType: tag === 'ol' ? 'ordered' : 'unordered',
+                    items
+                });
+            }
         }
 
         // 5. TABLES (Direct or wrapped)

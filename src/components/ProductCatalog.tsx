@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getImageForProduct } from '@/lib/image-mapper';
 
+import { useSearchParams } from 'next/navigation';
+
 type Product = {
     title: string;
     slug: string;
@@ -14,14 +16,38 @@ type Product = {
 };
 
 export default function ProductCatalog({ products }: { products: Product[] }) {
-    const [query, setQuery] = useState('');
+    const searchParams = useSearchParams();
+    const categoryParam = searchParams.get('category');
+    const [searchQuery, setSearchQuery] = useState('');
 
-    const filteredProducts = products.filter(p =>
-        p.slug !== 'about-us' && // Explicit client-side filter
-        !p.title.toLowerCase().includes('pipes') &&
-        (p.title.toLowerCase().includes(query.toLowerCase()) ||
-            p.meta_description?.toLowerCase().includes(query.toLowerCase()))
-    );
+    const filteredProducts = products.filter(p => {
+        // 1. Global exclusions
+        if (p.slug === 'about-us') return false;
+
+        // 2. Category Filter (from URL)
+        // If category is set, the product must match it
+        if (categoryParam) {
+            const cat = categoryParam.toLowerCase();
+            // Check title, description, or even slug
+            const matchesCategory = p.title.toLowerCase().includes(cat) ||
+                (p.meta_description && p.meta_description.toLowerCase().includes(cat)) ||
+                p.slug.toLowerCase().includes(cat.replace(' ', '-'));
+
+            if (!matchesCategory) return false;
+        }
+
+        // 3. Search Bar Filter (User input)
+        // If user typed something, it must ALSO match that
+        if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            const matchesSearch = p.title.toLowerCase().includes(q) ||
+                (p.meta_description && p.meta_description.toLowerCase().includes(q));
+
+            if (!matchesSearch) return false;
+        }
+
+        return true;
+    });
 
     return (
         <div>
@@ -29,9 +55,9 @@ export default function ProductCatalog({ products }: { products: Product[] }) {
             <div className="max-w-xl mx-auto mb-12 relative">
                 <input
                     type="text"
-                    placeholder="Search products..."
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder={`Search ${categoryParam ? categoryParam : 'all'} products...`}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-12 pr-4 py-4 rounded-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-lg"
                 />
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={24} />
@@ -96,7 +122,7 @@ export default function ProductCatalog({ products }: { products: Product[] }) {
 
             {filteredProducts.length === 0 && (
                 <div className="text-center py-20 text-gray-500">
-                    <p className="text-xl">No products found matching &quot;{query}&quot;</p>
+                    <p className="text-xl">No products found matching &quot;{searchQuery}&quot;</p>
                 </div>
             )}
         </div>

@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase';
 import ProductCatalog from '@/components/ProductCatalog';
 
-// export const revalidate = 3600;
+export const revalidate = 3600;
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
@@ -22,8 +22,8 @@ export default async function ProductsIndexPage() {
             .eq('company_id', process.env.NEXT_PUBLIC_COMPANY_ID!)
             .eq('type', 'product')
             .not('slug', 'eq', 'about-us') // Explicitly exclude About Us
-            .not('title', 'ilike', '%Pipes%') // Exclude Pipes if they are polluting
-            .order('title', { ascending: true });
+            .order('title', { ascending: true })
+            .range(0, 9999);
 
         posts = result.data;
         error = result.error;
@@ -43,6 +43,8 @@ export default async function ProductsIndexPage() {
                     <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                         We manufacture and export a wide range of ferrous and non-ferrous metal products complying with international standards.
                     </p>
+
+
                 </div>
 
                 {/* Client Component with Search & Filter - Passing Cleaned Data */}
@@ -50,25 +52,54 @@ export default async function ProductsIndexPage() {
                     // SERVER-SIDE CLEANUP
                     // 1. Deduplicate by slug
                     const uniquePosts = Array.from(new Map(posts.map(item => [item.slug, item])).values());
+                    const debugLogs: string[] = [];
 
                     // 2. Strict Filter
                     const cleanPosts = uniquePosts.filter(p => {
                         const title = p.title.toLowerCase();
                         const slug = p.slug.toLowerCase();
 
-                        // Exclude Non-Product Pages that might be in the database as 'products' or 'posts'
-                        const nonProducts = ['about us', 'contact', 'disclaimer', 'quality', 'privacy', 'sitemap', 'terms'];
-                        if (nonProducts.some(term => title.toLowerCase().includes(term) || slug.includes(term))) return false;
+                        // Exclude Non-Product Pages (STRICT SLUG MATCH ONLY)
+                        // Previous partial title match on "quality" killed valid products like "High Quality Steel"
+                        const nonProductSlugs = [
+                            'about-us', 'about', 'contact', 'contact-us',
+                            'disclaimer', 'quality', 'quality-policy',
+                            'privacy', 'privacy-policy', 'sitemap',
+                            'terms', 'terms-of-service', 'certificates'
+                        ];
 
+                        if (nonProductSlugs.includes(slug)) {
+                            // if (debugLogs.length < 5) debugLogs.push(`Dropped (Non-Product Page): ${slug}`);
+                            return false;
+                        }
 
-                        // Exclude Non-Forged Fittings (e.g. Pipes, if accidentally mixed)
-                        if (title.includes('pipe') || title.includes('tube')) return false;
-
-                        // Exclude Location-Based SEO Spam (Duplicates)
-                        // Using .includes() to catch suffixes like '-uae', '-uaer', '-oman', etc. anywhere in the slug
+                        // Exclude Location-Based SEO Spam
                         const spamSuffixes = ['-uae', '-oman', '-qatar', '-kuwait', '-saudi', '-bahrain', 'saudi arabia'];
-                        if (spamSuffixes.some(suffix => slug.includes(suffix) || title.toLowerCase().includes(suffix))) return false;
+                        if (spamSuffixes.some(suffix => slug.includes(suffix))) {
+                            // if (debugLogs.length < 5) debugLogs.push(`Dropped (Spam): ${slug}`);
+                            return false;
+                        }
 
+                        // CRITICAL FIX: Exclude "Fake" Products that are actually Category Pages
+                        if (title.startsWith('metal ministry') && title.includes('|')) {
+                            const parts = title.split('|');
+                            if (parts.length > 1) {
+                                const potentialCategory = parts[1].trim().toLowerCase();
+                                const broadCategories = [
+                                    'alloy steels', 'stainless steels', 'carbon steels', 'nickel alloys',
+                                    'titanium', 'copper alloys', 'duplex steel', 'super alloys',
+                                    'tool steels', 'aluminium', 'hastelloy', 'inconel', 'monel',
+                                    'refractory alloys', 'high nickel alloys'
+                                ];
+
+                                if (broadCategories.includes(potentialCategory)) {
+                                    if (debugLogs.length < 5) debugLogs.push(`Dropped (CategoryPage): ${potentialCategory}`);
+                                    return false;
+                                }
+                            }
+                        }
+
+                        // if (debugLogs.length < 3) debugLogs.push(`Kept: ${slug}`);
                         return true;
                     });
 

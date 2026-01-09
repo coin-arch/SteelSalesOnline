@@ -9,33 +9,30 @@ import Image from 'next/image';
 const SLIDES = [
     {
         id: 1,
-        // Legacy Slider 1
-        image: '/images/legacy-slider/slider-1.jpg',
-        subtitle: 'Forged Fittings Manufacturer',
-        title: 'Precision Threaded & Socket Weld Fittings',
-        description: 'ISO 9001:2015 Certified. Specialized in High Pressure Fittings for Oil, Gas, and Petrochemical Industries.',
-        cta: 'Contact Us',
-        link: '/contact-us'
+        image: '/images/slider/1.jpg',
+        subtitle: 'Premium Metal Supplier',
+        title: 'Pipes, Tubes, Sheets & Plates',
+        description: 'Your trusted partner for high-quality Stainless Steel, Carbon Steel, and Alloy Steel products for all industrial applications.',
+        cta: 'View Products',
+        link: '/products'
     },
     {
         id: 2,
-        // Legacy Slider 2
-        image: '/images/legacy-slider/slider-2.jpg',
+        image: '/images/slider/4.jpg',
         subtitle: 'Material Excellence',
-        title: 'Stainless Steel & Carbon Steel',
-        description: 'Premium quality 304/L, 316/L, A105, A350 LF2 Forged Fittings designed for extreme durability.',
-        cta: 'View Forged Fittings',
-        link: '/products/stainless-steel-threaded-forged-fittings-manufacturer'
+        title: 'High Nickel & Exotic Alloys',
+        description: 'Specialized stockist of Inconel, Monel, Hastelloy, and Titanium for critical environments in Oil & Gas and Power sectors.',
+        cta: 'View Exotic Alloys',
+        link: '/products?category=Nickel'
     },
     {
         id: 3,
-        // Legacy Slider 3
-        image: '/images/legacy-slider/slider-3.jpg',
-        subtitle: 'Exotic Alloys',
-        title: 'Nickel & Titanium Alloys',
-        description: 'Expertise in Monel, Inconel, Hastelloy, and Titanium fittings for specialized applications.',
-        cta: 'View Exotic Alloys',
-        link: '/products/high-nickel-alloy-threaded-forged-fittings-manufacturer'
+        image: '/images/slider/5.jpg',
+        subtitle: 'Global Exporter',
+        title: 'Precision Components & Fittings',
+        description: 'From tiny instrumentation fittings to large diameter pipes, we deliver excellence worldwide with complete certification.',
+        cta: 'Contact Us',
+        link: '/contact-us'
     }
 ];
 

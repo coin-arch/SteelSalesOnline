@@ -16,28 +16,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://forged-fitting.com'),
+  metadataBase: new URL('https://metalministry.in'),
   title: {
-    default: "Forged Fittings Manufacturer | Metal Ministry Inc.",
+    default: "Metal Ministry Inc. | Manufacturer & Exporter of Ferrous & Non-Ferrous Metals",
     template: "%s | Metal Ministry Inc."
   },
-  description: "ISO 9001:2015 Certified Manufacturer & Exporter of Threaded & Socket Weld Forged Fittings. Stainless Steel, Carbon Steel, Alloy Steel, and High Nickel Alloys.",
-  keywords: ["Forged Fittings", "Socket Weld Fittings", "Threaded Fittings", "Stainless Steel Fittings", "Metal Ministry Inc", "Pipe Fittings Manufacturer", "ASME B16.11"],
+  description: "ISO 9001:2015 Certified Manufacturer, Stockholder & Exporter of Stainless Steel, High Nickel Alloys, Alloy Steel, Pipes, Fittings, Flanges, and Fasteners.",
+  keywords: ["Metal Ministry Inc", "Stainless Steel", "High Nickel Alloys", "Alloy Steel", "Pipes", "Tubes", "Fittings", "Flanges", "Fasteners", "Titanium", "Inconel", "Monel", "Hastelloy"],
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://forged-fitting.com',
-    title: "Forged Fittings Manufacturer | Metal Ministry Inc.",
-    description: "Your trusted partner for premium forged fittings. Certified Manufacturer & Exporter.",
+    url: 'https://metalministry.in',
+    title: "Metal Ministry Inc. | Manufacturer & Exporter of Ferrous & Non-Ferrous Metals",
+    description: "Your trusted partner for premium metal products. Certified Manufacturer & Exporter.",
     siteName: "Metal Ministry Inc.",
   },
   twitter: {
     card: 'summary_large_image',
   },
   icons: {
-    icon: '/images/logo1.png',
-    shortcut: '/images/logo1.png',
-    apple: '/images/logo1.png',
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
   }
 };
 

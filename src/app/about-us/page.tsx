@@ -23,79 +23,117 @@ export default function AboutUsPage() {
             {/* Main Content */}
             <div className="container mx-auto px-4 py-24 space-y-24">
 
-                {/* Our Story */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                {/* Legacy Content Match */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     <div>
-                        <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">Who We Are</h2>
-                        <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">A Partner You Can Trust</h3>
+                        <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">About Company</h2>
+                        <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Metal Ministry Inc.</h3>
                         <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-justify font-light">
                             <p>
-                                <strong>Metal Ministry Inc.</strong> is a premier manufacturer and exporter specializing in high-quality Ferrous and Non-Ferrous metal components.
-                                Under the visionary leadership of <strong className="text-blue-600">Mr. Dinesh Chandan</strong>, we have established ourselves as a reliable partner for industries ranging from Oil & Gas to Pharmaceuticals.
+                                <strong>Metal Ministry Inc.</strong> is a leading ISO 9001-2015 Manufacturer & Stockholder of products in grades of Stainless Steel, Duplex & Super Duplex Steel, Nickel Alloys, Copper Alloys, Titanium Alloys, Aluminium Alloys, Carbon & Alloy Steels, Tool Steels & other Aerospace and Marine grades such as PH series Steel, MO series Steel, Mumetal, Invar & Kovar, Maraging Steels etc.
                             </p>
+
                             <p>
-                                We prioritize quality above all else. Our state-of-the-art manufacturing facility ensures that every product—whether it be Stainless Steel Fittings or High Nickel Alloys—meets rigorous international standards (ASME, ASTM, DIN).
+                                We are into Fabrication of Precision Components, Fasteners, Tank Heads, Valves, and various products as per customer requirements, designs or Drawings. We are your one stop solution for all your metal Product needs. We look forward that you allow us to enter your organisation to supply the products you need and we assure you we will be at your doors with our best products and after sales Services.
                             </p>
-                            <p>
-                                Located in the heart of Mumbai's metal market, we maintain a vast inventory to ensure rapid delivery for urgent specialized requirements.
-                            </p>
+
+                            <div className="mt-8 space-y-8">
+                                <div>
+                                    <h4 className="font-bold text-gray-900 dark:text-white mb-4 text-xl border-l-4 border-blue-600 pl-4">What We Manufacture?</h4>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-base">
+                                        {[
+                                            "Pipe Fittings", "Instrumentation Fittings", "Flanges & Fasteners", "Valves",
+                                            "Gaskets", "Refractory Anchors", "Pharma Fittings", "Stainless Steel Railing & Accessories",
+                                            "Forged & Precision CNC Components"
+                                        ].map(item => (
+                                            <li key={item} className="flex items-center gap-2">
+                                                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" /> {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 className="font-bold text-gray-900 dark:text-white mb-4 text-xl border-l-4 border-green-500 pl-4">What We Stock & Supply?</h4>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-base">
+                                        {[
+                                            "Strips, Sheets, Plates & Coils", "Seamless & Welded Pipes", "Capillary Pipes & Tubing",
+                                            "Round, Hex, Square Bars", "Angles & Channels"
+                                        ].map(item => (
+                                            <li key={item} className="flex items-center gap-2">
+                                                <span className="w-1.5 h-1.5 bg-green-500 rounded-full" /> {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 className="font-bold text-gray-900 dark:text-white mb-4 text-xl border-l-4 border-purple-500 pl-4">Fabricated Manufacturing Jobs</h4>
+                                    <ul className="space-y-3 text-base text-gray-700 dark:text-gray-300">
+                                        {[
+                                            "Piping components / Instrumentation fittings",
+                                            "Aerospace & Defence Forged components",
+                                            "Discs / Tubes / Rivets / springs",
+                                            "Manifold valves / Ball valves",
+                                            "Sheet metal components",
+                                            "Metal / Jacketed / Spiral wound Gaskets",
+                                            "Spray Nozzles",
+                                            "Nuts, Bolts & Studs",
+                                            "CNC, VMC or Lathe machined components",
+                                            "Stainless Steel Tanks",
+                                            "Stainless steel Utensils"
+                                        ].map(item => (
+                                            <li key={item} className="flex items-start gap-3 hover:translate-x-1 transition-transform">
+                                                <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2.5 shrink-0 shadow-sm" />
+                                                <span className="leading-relaxed">{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="relative group">
+
+                    <div className="relative group sticky top-32">
                         <div className="absolute inset-0 bg-blue-600 rounded-3xl transform rotate-3 opacity-10 group-hover:rotate-6 transition-transform duration-500"></div>
-                        <div className="relative bg-gray-100 dark:bg-slate-800 rounded-3xl h-[500px] overflow-hidden shadow-2xl">
+                        <div className="relative bg-gray-100 dark:bg-slate-800 rounded-3xl overflow-hidden shadow-2xl h-[600px]">
                             <Image
-                                src="/images/who-we-are.jpg"
+                                src="/images/vision.jpg"
                                 alt="Metal Ministry Workshop"
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                             {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80"></div>
+
+                            <div className="absolute bottom-0 left-0 p-10 text-white">
+                                <h4 className="text-3xl font-bold mb-3">Quality Assurance</h4>
+                                <p className="text-gray-200 text-lg font-light tracking-wide">ISO 9001:2015 Certified<br />Excellence in every component.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Vision & Mission */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="bg-gray-50 dark:bg-slate-900 p-12 rounded-3xl border border-gray-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300">
-                        <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 mb-8">
-                            <Target size={36} />
+                {/* Grades Strip */}
+                <div className="bg-gray-50 dark:bg-slate-900 p-8 rounded-2xl border border-gray-100 dark:border-slate-800">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Material Grades</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+                        <div className="space-y-2">
+                            <strong className="block text-blue-600">High Nickel Alloys</strong>
+                            <p>Nickel 200/201, Monel 400/K500, Inconel 600/625/718, Hastelloy C276.</p>
                         </div>
-                        <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Vision</h3>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                            To be the global benchmark for quality in the metal manufacturing sector, fostering innovation and setting new standards for reliability and customer service.
-                        </p>
-                    </div>
-
-                    <div className="bg-gray-50 dark:bg-slate-900 p-12 rounded-3xl border border-gray-100 dark:border-slate-800 hover:shadow-xl transition-all duration-300">
-                        <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 mb-8">
-                            <Rocket size={36} />
+                        <div className="space-y-2">
+                            <strong className="block text-blue-600">Titanium & Aluminium</strong>
+                            <p>Titanium Gr 1, 2, 5, 7. Aluminium 2024, 6061, 7075.</p>
                         </div>
-                        <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Mission</h3>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                            To deliver excellence through superior products, maintain a zero-defect policy, and build lasting partnerships based on trust, transparency, and timely execution.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Stats Strip (moved down) */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-gray-100 dark:border-slate-800">
-                    <div className="text-center">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">25+</div>
-                        <div className="text-sm uppercase tracking-widest text-gray-500">Countries Served</div>
-                    </div>
-                    <div className="text-center border-l border-gray-200 dark:border-slate-800">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">ISO</div>
-                        <div className="text-sm uppercase tracking-widest text-gray-500">9001:2015</div>
-                    </div>
-                    <div className="text-center border-l border-gray-200 dark:border-slate-800">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
-                        <div className="text-sm uppercase tracking-widest text-gray-500">Projects Done</div>
-                    </div>
-                    <div className="text-center border-l border-gray-200 dark:border-slate-800">
-                        <div className="text-4xl font-bold text-blue-600 mb-2">24/7</div>
-                        <div className="text-sm uppercase tracking-widest text-gray-500">Support</div>
+                        <div className="space-y-2">
+                            <strong className="block text-blue-600">Stainless & Duplex</strong>
+                            <p>304, 316, 317L, 321, 904L, SMO 254. Duplex 2205, Super Duplex 32760.</p>
+                        </div>
+                        <div className="space-y-2">
+                            <strong className="block text-blue-600">Exotic Alloys</strong>
+                            <p>Tantalum, Niobium, Invar, Kovar, Maraging Steel, MuMetal.</p>
+                        </div>
                     </div>
                 </div>
 

@@ -10,59 +10,59 @@ import { getImageForProduct } from '@/lib/image-mapper';
 
 const PRODUCTS = [
   {
-    title: "Stainless Steel Threaded",
-    desc: "304, 304L, 316, 316L. High Pressure 2000lb, 3000lb, 6000lb.",
-    slug: "stainless-steel-threaded-forged-fittings-manufacturer",
-    link: "/products/stainless-steel-threaded-forged-fittings-manufacturer",
-    size: "large" // 2x2
+    title: "Alloy Steel",
+    desc: "300M, 4130, 4340, 8620. Aircraft & Structural Quality.",
+    slug: "alloy-steels-chemical-properties",
+    link: "/products/alloy-steels-chemical-properties",
+    size: "large"
   },
   {
-    title: "Carbon Steel Threaded",
-    desc: "A105, A105N, LF2. For High Temperature Service.",
-    slug: "carbon-steel-threaded-forged-fittings-manufacturer",
-    link: "/products/carbon-steel-threaded-forged-fittings-manufacturer",
-    size: "tall" // 1x2
+    title: "Stainless Steel",
+    desc: "304, 316, 303, 17-4PH. Corrosion Resistant Grades.",
+    slug: "stainless-steels-chemical-properties",
+    link: "/products/stainless-steels-chemical-properties",
+    size: "tall"
   },
   {
-    title: "Socket Weld Fittings",
-    desc: "ASME B16.11 Forged Steel Fittings.",
-    slug: "stainless-steel-socket-weld-fittings-manufacturer",
-    link: "/products/stainless-steel-socket-weld-fittings-manufacturer",
+    title: "Aluminium Alloys",
+    desc: "2024, 6061, 7075. Aerospace & Marine Grades.",
+    slug: "aluminium-chemical-properties",
+    link: "/products/aluminium-chemical-properties",
     size: "standard"
   },
   {
-    title: "Alloy Steel Fittings",
-    desc: "F1, F5, F9, F11, F22, F91. Chrome Moly Fittings.",
-    slug: "alloy-steel-threaded-forged-fittings-manufacturer",
-    link: "/products/alloy-steel-threaded-forged-fittings-manufacturer",
+    title: "Carbon Steel",
+    desc: "1018, 1045, A36. General Purpose Steels.",
+    slug: "carbon-steels-chemical-properties",
+    link: "/products/carbon-steels-chemical-properties",
     size: "standard"
   },
   {
-    title: "Duplex Steel Fittings",
-    desc: "UNS S31803, S32205. High Strength & Corrosion Resistance.",
-    slug: "duplex-steel-s31803-s32205-threaded-forged-fittings-manufacturer",
-    link: "/products/duplex-steel-s31803-s32205-threaded-forged-fittings-manufacturer",
-    size: "wide" // 2x1
-  },
-  {
-    title: "High Nickel Alloys",
-    desc: "Monel, Inconel, Hastelloy, Nickel 200/201.",
-    slug: "high-nickel-alloy-threaded-forged-fittings-manufacturer",
-    link: "/products/high-nickel-alloy-threaded-forged-fittings-manufacturer",
+    title: "Titanium Alloys",
+    desc: "Grade 2, Grade 5 (Ti-6Al-4V). High Strength to Weight.",
+    slug: "titanium-chemical-properties",
+    link: "/products/titanium-chemical-properties",
     size: "wide"
   },
   {
-    title: "Cupro Nickel Fittings",
-    desc: "Cu-Ni 90/10 & 70/30. Marine Applications.",
-    slug: "cupro-nickel-threaded-forged-fittings-manufacturer",
-    link: "/products/cupro-nickel-threaded-forged-fittings-manufacturer",
+    title: "Super Alloys",
+    desc: "Inconel, Monel, Hastelloy. High Temperature.",
+    slug: "super-alloys-chemical-properties",
+    link: "/products/super-alloys-chemical-properties",
     size: "wide"
   },
   {
-    title: "Titanium Fittings",
-    desc: "Grade 2, Grade 5. Aerospace & Chemical Industries.",
-    slug: "titanium-alloy-threaded-forged-fittings-manufacturer",
-    link: "/products/titanium-alloy-threaded-forged-fittings-manufacturer",
+    title: "Tool Steel",
+    desc: "D2, H13, O1, M2. Wear Resistant & High Hardness.",
+    slug: "tool-steels-chemical-properties",
+    link: "/products/tool-steels-chemical-properties",
+    size: "wide"
+  },
+  {
+    title: "Copper Alloys",
+    desc: "Beryllium Copper, Bronze, Brass.",
+    slug: "copper-alloys-chemical-properties",
+    link: "/products/copper-alloys-chemical-properties",
     size: "wide"
   }
 ];
@@ -120,15 +120,15 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Premium Forged Fittings</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Premium Metal Supplier</h2>
               <div className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed space-y-6">
                 <p>
-                  Specialized Manufacturer & Exporter of High-Pressure Forged Fittings.
-                  A specialized division of <strong className="text-blue-600">Metal Ministry Inc.</strong>, dedicated to precision engineering.
+                  Specialized Manufacturer, Stockholder & Exporter of Ferrous & Non-Ferrous Metals.
+                  <strong className="text-blue-600"> Metal Ministry Inc.</strong> is your trusted partner for high-quality raw materials.
                 </p>
                 <p>
-                  We supply <strong className="text-gray-900 dark:text-white">Socket Weld</strong> and <strong className="text-gray-900 dark:text-white">Threaded Fittings</strong> in
-                  Stainless Steel, Carbon Steel, Alloy Steel, and High Nickel Alloys.
+                  We supply <strong className="text-gray-900 dark:text-white">Sheets, Plates, Pipes, Bars</strong> and <strong className="text-gray-900 dark:text-white">Fittings</strong> in
+                  Stainless Steel, Carbon Steel, Alloy Steel, Titanium, and High Nickel Alloys.
                 </p>
               </div>
               <div className="mt-8">
@@ -149,12 +149,12 @@ export default function Home() {
           <div className="text-center mb-20">
             <span className="text-blue-600 font-bold uppercase tracking-widest text-sm block mb-4">Our Catalog</span>
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-              Precision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Engineered</span>
+              Precision <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Materials</span>
             </h2>
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[240px] gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[200px] gap-6">
             {PRODUCTS.map((product, idx) => (
               <div
                 key={idx}
@@ -225,64 +225,7 @@ export default function Home() {
       </section>
 
 
-      {/* 5. Certifications Marquee */}
-      <section className="py-20 bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-slate-800">
-        <div className="container mx-auto px-4 mb-12 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Trusted Certifications</h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full" />
-        </div>
-        <Marquee speed={15}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-            <div key={num} className="relative w-32 h-24 hover:scale-110 transition-transform duration-300">
-              <Image
-                src={`/images/partner0${num}.png`}
-                alt={`Certification ${num}`}
-                fill
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </Marquee>
-      </section>
 
-      {/* 6. Industries & Applications Floating Cards */}
-      <section className="py-24 bg-gray-50 dark:bg-slate-950 overflow-hidden relative">
-        <div className="container mx-auto px-4 mb-12 text-center relative z-10">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Industries We Serve</h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full" />
-        </div>
-
-        <div className="relative rotate-[-2deg] scale-110">
-          <Marquee speed={20} direction="right" pauseOnHover={true}>
-            {[
-              { img: 'oil-gas-industry.jpg', title: 'Oil & Gas' },
-              { img: 'chemical-industry.jpg', title: 'Chemical' },
-              { img: 'pharmaceutical-industry.jpg', title: 'Pharma' },
-              { img: 'railway-sector.jpg', title: 'Railways' },
-              { img: 'automobile-industry.jpg', title: 'Automobile' },
-              { img: 'energy-sector.jpg', title: 'Energy' },
-              { img: 'food-dairy-industry.jpg', title: 'Food & Dairy' },
-            ].map((item, idx) => (
-              <div key={idx} className="relative w-80 h-52 shrink-0 rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-slate-800 group">
-                <div className="absolute inset-0">
-                  <Image
-                    src={`/images/${item.img}`}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                </div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h4 className="text-white text-xl font-bold translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    {item.title}
-                  </h4>
-                </div>
-              </div>
-            ))}
-          </Marquee>
-        </div>
-      </section>
 
       {/* 7. Contact CTA - Enhanced Redesign */}
       <section className="py-28 relative overflow-hidden">
@@ -290,7 +233,7 @@ export default function Home() {
         {/* Deep Industrial Background */}
         <div className="absolute inset-0 p-0 m-0">
           <Image
-            src="/images/slider-1.jpg"
+            src="/images/slider/6.jpg"
             alt="Background"
             fill
             className="object-cover blur-[2px] brightness-[0.2]"
@@ -350,9 +293,9 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Forged Fittings (Metal Ministry Inc.)",
-            "url": "https://forged-fitting.com",
-            "logo": "https://forged-fitting.com/images/logo1.png",
+            "name": "Metal Ministry Inc.",
+            "url": "https://metalministry.in",
+            "logo": "https://metalministry.in/images/logo.png",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "+91-9892171042",

@@ -41,10 +41,16 @@ export default function ContactUsPage() {
                             <div>
                                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Product Interest</label>
                                 <select className="w-full px-5 py-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-blue-500 transition-all text-gray-900 dark:text-white outline-none cursor-pointer">
-                                    <option>Stainless Steel Pipes</option>
-                                    <option>Butt Weld Fittings</option>
-                                    <option>Flanges</option>
-                                    <option>High Nickel Alloys</option>
+                                    <option>Select a Product Category</option>
+                                    <option>Stainless Steel</option>
+                                    <option>Carbon & Alloy Steel</option>
+                                    <option>Nickel & Super Alloys (Inconel, Monel, Hastelloy)</option>
+                                    <option>Non-Ferrous (Titanium, Aluminium, Copper)</option>
+                                    <option>Pipes & Tubes</option>
+                                    <option>Butt Weld & Forged Fittings</option>
+                                    <option>Flanges & Fasteners</option>
+                                    <option>Sheets, Plates & Coils</option>
+                                    <option>Bars, Rods & Wires</option>
                                     <option>Other / General Inquiry</option>
                                 </select>
                             </div>
@@ -73,10 +79,9 @@ export default function ContactUsPage() {
                                     <div>
                                         <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg">Registered Office</h3>
                                         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                            Prasad Chambers<br />
-                                            Tata Rd No 2, Charni Road East,<br />
-                                            Opera House, Girgaon,<br />
-                                            Mumbai, Maharashtra 400004
+                                            517, Prasad Chambers, Tata Road No. 2,<br />
+                                            Opera House, Mumbai - 04 <br />
+                                            Maharashtra, India.
                                         </p>
                                     </div>
                                 </div>
@@ -98,7 +103,12 @@ export default function ContactUsPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg">Email</h3>
-                                        <p className="text-lg text-gray-700 dark:text-gray-300 font-medium">enquiry@metalministry.in</p>
+                                        <p className="text-lg text-gray-700 dark:text-gray-300 font-medium hover:text-blue-600 transition-colors">
+                                            <a href="mailto:enquiry@metalministry.in">enquiry@metalministry.in</a>
+                                        </p>
+                                        <p className="text-lg text-gray-700 dark:text-gray-300 font-medium hover:text-blue-600 transition-colors">
+                                            <a href="mailto:info@metalministry.in">info@metalministry.in</a>
+                                        </p>
                                         <p className="text-sm text-gray-500 mt-1">Response within 24 hours</p>
                                     </div>
                                 </div>

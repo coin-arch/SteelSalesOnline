@@ -38,11 +38,12 @@ if (missingVars.length > 0) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const PUBLIC_HTML_DIR = path.join(__dirname, '../../legacy_source');
+const PUBLIC_HTML_DIR = path.join(__dirname, '../../public_html');
 const EXCLUDED_FILES = [
     'index.html',
-    'contact-us.html',
-    'about-us.html',
+    'contact.html',
+    'about.html',
+    'products.html',
     'sitemap.html',
     'thank-you.html',
     'googlef006c00a2c7879ea.html'
@@ -72,16 +73,22 @@ async function migrate() {
             const title = $('title').text().trim() || null;
             const meta_description = $('meta[name="description"]').attr('content') || null;
             const keywords = $('meta[name="keywords"]').attr('content') || null;
+            const keywordsArray = keywords ? keywords.split(',').map(k => k.trim()).filter(k => k.length > 0) : [];
             const canonical_url = $('link[rel="canonical"]').attr('href') || null;
 
             // Extract Slug (filename without extension)
             const slug = path.basename(file, '.html');
 
             // Extract Main Content
-            // Try .col-sm-9 first (products), then fallback to .col-sm-12 (full width pages like Quality)
-            let content = $('.col-sm-9').html();
+            // Target the main content wrapper for Buildify template
+            let content = $('.buildify_tm_list_wrap').html();
+
+            // Fallbacks if lists wrapper isn't found (though most product pages use it)
             if (!content || !content.trim()) {
-                content = $('.col-sm-12').html();
+                content = $('.buildify_tm_about_wrap').html();
+            }
+            if (!content || !content.trim()) {
+                content = $('.buildify_tm_content .container').html();
             }
 
             if (!content) {
@@ -143,10 +150,11 @@ async function migrate() {
                 content: content,
                 slug: slug,
                 company_id: COMPANY_ID,
+                type: 'product',
                 published_at: new Date().toISOString(),
                 meta_title: title, // Use title tag as meta_title
                 meta_description: meta_description,
-                keywords: keywords,
+                keywords: keywordsArray,
                 canonical_url: canonical_url
             };
 

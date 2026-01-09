@@ -33,13 +33,13 @@ export default function Footer() {
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/images/logo.png"
-                                alt="Forged Fittings Manufacturer"
+                                alt="Metal Ministry Inc."
                                 className="h-20 w-auto brightness-0 invert opacity-90"
                             />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
-                            ISO 9001:2015 Certified Manufacturer & Exporter of High-Pressure Forged Fittings.
-                            Specializing in Stainless Steel, Carbon Steel, and High Nickel Alloys.
+                            ISO 9001:2015 Certified Manufacturer, Stockist & Exporter.
+                            One-stop solution for Stainless Steel, Carbon Steel, High Nickel Alloys, Pipes, Plates, and Fittings.
                         </p>
                         <div className="flex gap-4">
                             <SocialLink icon={<Facebook size={18} />} href="#" />
@@ -56,7 +56,7 @@ export default function Footer() {
                             <li><FooterLink href="/">Home</FooterLink></li>
                             <li><FooterLink href="/about-us">About Company</FooterLink></li>
                             <li><FooterLink href="/quality">Quality Policy</FooterLink></li>
-                            <li><FooterLink href="/certificates">Certificates</FooterLink></li>
+                            {/* <li><FooterLink href="/certificates">Certificates</FooterLink></li> */}
                             <li><FooterLink href="/blogs">Industry Blog</FooterLink></li>
                             <li><FooterLink href="/contact-us">Contact Us</FooterLink></li>
                         </ul>
@@ -64,14 +64,14 @@ export default function Footer() {
 
                     {/* Core Products */}
                     <div>
-                        <h4 className="text-white font-bold text-lg mb-6">Forged Fittings</h4>
+                        <h4 className="text-white font-bold text-lg mb-6">Products</h4>
                         <ul className="space-y-4">
-                            <li><FooterLink href="/products/stainless-steel-threaded-forged-fittings-manufacturer">Stainless Steel Threaded</FooterLink></li>
-                            <li><FooterLink href="/products/carbon-steel-threaded-forged-fittings-manufacturer">Carbon Steel Threaded</FooterLink></li>
-                            <li><FooterLink href="/products/alloy-steel-threaded-forged-fittings-manufacturer">Alloy Steel Threaded</FooterLink></li>
-                            <li><FooterLink href="/products/stainless-steel-socket-weld-forged-fittings-manufacturer">Stainless Socket Weld</FooterLink></li>
-                            <li><FooterLink href="/products/carbon-steel-socket-weld-forged-fittings-manufacturer">Carbon Socket Weld</FooterLink></li>
-                            <li><FooterLink href="/products/alloy-steel-socket-weld-forged-fittings-manufacturer">Alloy Socket Weld</FooterLink></li>
+                            <li><FooterLink href="/products?category=Stainless%20Steel">Stainless Steel</FooterLink></li>
+                            <li><FooterLink href="/products?category=Carbon%20Steel">Carbon Steel</FooterLink></li>
+                            <li><FooterLink href="/products?category=Alloy%20Steel">Alloy Steel</FooterLink></li>
+                            <li><FooterLink href="/products?category=Nickel">Nickel Alloys</FooterLink></li>
+                            <li><FooterLink href="/products?category=Titanium">Titanium</FooterLink></li>
+                            <li><FooterLink href="/products?category=Duplex">Duplex Steel</FooterLink></li>
                         </ul>
                     </div>
 
@@ -86,9 +86,9 @@ export default function Footer() {
                                 <div>
                                     <h5 className="text-white font-medium mb-1">Head Office</h5>
                                     <p className="text-gray-400 text-sm">
-                                        Prasad Chambers, Tata Rd No 2, <br />
-                                        Charni Road East, Opera House,<br />
-                                        Girgaon, Mumbai - 400004
+                                        517, Prasad Chambers, Tata Road No. 2,
+                                        Opera House, Mumbai - 04 <br />
+                                        Maharashtra, India. <br />
                                     </p>
                                 </div>
                             </li>

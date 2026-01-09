@@ -61,10 +61,33 @@ export default function ModernDataGrid({ rows }: ModernDataGridProps) {
         ]];
     }
 
-    // Filter Logic
-    const filteredBodyRows = bodyRows.filter(row =>
+    // FIX: Filter Logic for both Standard and Header-Only (Legacy) Tables
+    // Legacy tables often use <th> for ALL cells (Key-Value pairs), resulting in 0 bodyRows.
+    // Logic: If we have body rows, filter them. If NOT, but we have header rows, filter the header rows (treating them as data).
+
+    let rowsToFilter = bodyRows;
+    let isHeaderOnlyTable = false;
+
+    if (bodyRows.length === 0 && headerRows.length > 0) {
+        // Treat as Header-Only Data Table
+        rowsToFilter = headerRows;
+        isHeaderOnlyTable = true;
+    }
+
+    const filteredRows = rowsToFilter.filter(row =>
         row.some(cell => cell.text.toLowerCase().includes(searchTerm.toLowerCase()))
     );
+
+    // Determine what to render
+    // If it's a standard table, we render filteredBodyRows in tbody.
+    // If it's header-only, we render filteredRows in tbody (because we treat them as data).
+    const displayedBodyRows = isHeaderOnlyTable ? filteredRows : filteredRows;
+
+    // For the "thead", if it's header-only, we might want to hide the original thead 
+    // to avoid duplication if we are re-rendering them in tbody?
+    // Actually, usually these Key-Value tables don't have a "Head", they are just a list.
+    // So if isHeaderOnlyTable, we might skip rendering the separate <thead> block entirely.
+    const displayedHeaderRows = isHeaderOnlyTable ? [] : headerRows;
 
     return (
         <div className="rounded-xl shadow-lg border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 my-8 overflow-hidden">
@@ -83,29 +106,31 @@ export default function ModernDataGrid({ rows }: ModernDataGridProps) {
             {/* Table Container */}
             <div className="overflow-x-auto custom-scrollbar">
                 <table className="w-full text-left border-collapse min-w-[600px] lg:min-w-full">
-                    <thead>
-                        {headerRows.map((row, rIndex) => (
-                            <tr key={`h-${rIndex}`} className="bg-gray-100 dark:bg-slate-800 border-b border-gray-300 dark:border-slate-600">
-                                {row.map((cell, cIndex) => (
-                                    <th
-                                        key={`h-${rIndex}-${cIndex}`}
-                                        colSpan={cell.colSpan}
-                                        rowSpan={cell.rowSpan}
-                                        className={`
-                                p-3 text-xs font-bold tracking-wider text-gray-800 dark:text-gray-100 uppercase 
-                                border-r border-gray-300 dark:border-slate-600 last:border-r-0 align-middle
-                                ${cell.align === 'center' ? 'text-center' : 'text-left'}
-                            `}
-                                    >
-                                        {cell.text}
-                                    </th>
-                                ))}
-                            </tr>
-                        ))}
-                    </thead>
+                    {displayedHeaderRows.length > 0 && (
+                        <thead>
+                            {displayedHeaderRows.map((row, rIndex) => (
+                                <tr key={`h-${rIndex}`} className="bg-gray-100 dark:bg-slate-800 border-b border-gray-300 dark:border-slate-600">
+                                    {row.map((cell, cIndex) => (
+                                        <th
+                                            key={`h-${rIndex}-${cIndex}`}
+                                            colSpan={cell.colSpan}
+                                            rowSpan={cell.rowSpan}
+                                            className={`
+                                    p-3 text-xs font-bold tracking-wider text-gray-800 dark:text-gray-100 uppercase 
+                                    border-r border-gray-300 dark:border-slate-600 last:border-r-0 align-middle
+                                    ${cell.align === 'center' ? 'text-center' : 'text-left'}
+                                `}
+                                        >
+                                            {cell.text}
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                    )}
                     <tbody>
                         <AnimatePresence>
-                            {filteredBodyRows.map((row, rIndex) => (
+                            {displayedBodyRows.map((row, rIndex) => (
                                 <motion.tr
                                     key={`b-${rIndex}`}
                                     initial={{ opacity: 0 }}
@@ -130,20 +155,23 @@ export default function ModernDataGrid({ rows }: ModernDataGridProps) {
                                 </motion.tr>
                             ))}
                         </AnimatePresence>
-                        {filteredBodyRows.length === 0 && (
+                        {displayedBodyRows.length === 0 && searchTerm ? (
                             <tr>
                                 <td colSpan={100} className="p-8 text-center text-gray-400">
                                     No match found for "{searchTerm}"
                                 </td>
                             </tr>
-                        )}
+                        ) : null}
                     </tbody>
                 </table>
             </div>
 
-            <div className="p-2 bg-gray-100 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 text-xs text-center text-gray-500 font-medium">
-                {filteredBodyRows.length} records found
-            </div>
+            {/* Only show footer if there is actual data or a search term is active */}
+            {(displayedBodyRows.length > 0 || searchTerm) && (
+                <div className="p-2 bg-gray-100 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700 text-xs text-center text-gray-500 font-medium">
+                    {displayedBodyRows.length} records found
+                </div>
+            )}
         </div>
     );
 }
