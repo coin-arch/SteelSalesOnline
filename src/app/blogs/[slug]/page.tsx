@@ -70,10 +70,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     <span className="text-gray-800 dark:text-gray-200 font-medium truncate max-w-[200px] md:max-w-md">{post.title}</span>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
                     {/* Main Content Area */}
-                    <article className="w-full lg:w-3/4 bg-white dark:bg-slate-900 p-8 lg:p-12 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 transition-all duration-300">
+                    <article className="lg:col-span-3 bg-white dark:bg-slate-900 p-8 lg:p-12 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 transition-all duration-300">
                         <header className="mb-8 border-b border-gray-100 pb-8">
                             <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
                                 {post.title}
@@ -96,7 +96,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </article>
 
                     {/* Sidebar - Reused for consistency */}
-                    <Sidebar />
+                    <div className="lg:col-span-1">
+                        <Sidebar />
+                    </div>
                 </div>
             </div>
 
